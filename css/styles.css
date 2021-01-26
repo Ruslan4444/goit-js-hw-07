@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  color: #212121;
+  background-color: #fff;
+}
+
+.nav__link-primary {
+  font-size: 25px;
+}
+
+.product-card__name {
+  display: flex;
+  align-items: center;
+}
+
+.product-card__name::before {
+  display: inline-block;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: teal;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.product-card__name-available::before {
+  background-color: green;
+}
+
+.product-card__name-not-available::before {
+  background-color: red;
+}
