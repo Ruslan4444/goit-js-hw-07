@@ -2,6 +2,7 @@
 // Если инпут пустой, в спане должна отображаться строка 'незнакомец'.
 
 const inputRef = document.querySelector('#name-input');
+inputRef.style.margin = '20px';
 const spanRef = document.querySelector('#name-output');
 
 inputRef.addEventListener('input', () => {
