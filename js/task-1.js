@@ -20,7 +20,7 @@ itemRef.forEach(item => {
     const titleContent = item.firstElementChild.textContent;
     const totalElements = item.lastElementChild.children.length;
 
-    console.log(`Категория: ${titleContent} \nКоличество елементов: ${totalElements}`);
+    console.log(`Категория: ${titleContent} \n Количество елементов: ${totalElements}`);
 
 });
 

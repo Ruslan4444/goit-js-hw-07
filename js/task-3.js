@@ -21,25 +21,34 @@ const images = [
   },
 ];
 
+// const galleryListRef = document.querySelector('#gallery');
+
+// const gallaryLiRef = images.map(image => {
+//     const itemRef = document.createElement('li');
+//     const imageRef = document.createElement('img');
+//     imageRef.setAttribute('src', image.url);
+//     imageRef.setAttribute('alt', image.alt);
+//     imageRef.setAttribute('style', "list-style: none; display: flex; width: 500px; height: 300px;");
+
+//     itemRef.appendChild(imageRef);
+//     itemRef.classList.add('gallery-item');
+//     return itemRef;
+// });
+
+// galleryListRef.append(...gallaryLiRef);
+
+// console.log(galleryListRef);
+
+
+// const galleryList = document.querySelector('#gallery');
+// galleryList.setAttribute('style', "list-style: none;");
+
 const galleryListRef = document.querySelector('#gallery');
 
-const gallaryLiRef = images.map(image => {
-    const itemRef = document.createElement('li');
-    const imageRef = document.createElement('img');
-    imageRef.setAttribute('src', image.url);
-    imageRef.setAttribute('alt', image.alt);
-    imageRef.setAttribute('style', "list-style: none; display: flex; width: 500px; height: 300px;");
-
-    itemRef.appendChild(imageRef);
-    itemRef.classList.add('gallery-item');
-    return itemRef;
+const liRef = images.map(image => {
+  return image = `<li><img src = "${image.url}" alt = "${image.alt}"></li>`;
 });
 
-galleryListRef.append(...gallaryLiRef);
-
+galleryListRef.insertAdjacentHTML('afterbegin', liRef.join(''));
 console.log(galleryListRef);
-
-
-const galleryList = document.querySelector('#gallery');
-galleryList.setAttribute('style', "list-style: none;");
 
