@@ -47,7 +47,6 @@ function createGalleryMarkup(items) {
 function onImageClick(e) {
   e.preventDefault();
   const isImage = e.target.nodeName;
-  console.log(isImage);
   if (!isImage) {
     return;
   }
