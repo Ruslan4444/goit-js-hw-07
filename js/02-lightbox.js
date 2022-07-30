@@ -12,12 +12,15 @@ const refs = {
 
 refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(galleryItems));
 
+const lightbox = new SimpleLightbox('.gallery a', { captionDelay: '250ms' });
+
 function createGalleryMarkup(items) {
   return items
     .map(
       ({ preview, original, description }) =>
-        `<a class="gallery__item" href="${original}"><img class="gallery__image" src="${preview}" alt="${description}" /></a>`,
+        `<a class="gallery__item" href="${original}"><img class="gallery__image" src="${preview}" alt="${description}" title="${description}" /></a>`,
     )
     .join('');
 }
+
 console.log(galleryItems);
