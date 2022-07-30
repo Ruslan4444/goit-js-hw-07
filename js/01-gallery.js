@@ -23,9 +23,6 @@ import { galleryItems } from './gallery-items.js';
 const refs = {
   gallery: document.querySelector('.gallery'),
 };
-const modalTemplate = link => `<div class="modal">
-        <img src="${link}" alt="Photo"/>
-    </div>`;
 
 refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(galleryItems));
 refs.gallery.addEventListener('click', onImageClick);
@@ -48,18 +45,15 @@ function createGalleryMarkup(items) {
     .join('');
 }
 function onImageClick(e) {
-  e.preventDafault();
+  e.preventDefault();
   const imgHref = e.target.dataset.source;
-  // console.log(imgHref);
-  const instance = basicLightbox.create(`<div class="modal">
-        <img src="${imgHref}" alt="Photo"/>
-    </div>`);
+  const instance = basicLightbox.create(`<img src="${imgHref}" alt="Photo"/>`);
 
   instance.show();
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Escape') {
+      instance.close();
+    }
+  });
 }
 console.log(galleryItems);
-document.addEventListener('keydown', e => {
-  if (e.code === 'Escape') {
-    instance.close();
-  }
-});
