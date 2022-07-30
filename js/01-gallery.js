@@ -46,6 +46,11 @@ function createGalleryMarkup(items) {
 }
 function onImageClick(e) {
   e.preventDefault();
+  const isImage = e.target.nodeName;
+  console.log(isImage);
+  if (!isImage) {
+    return;
+  }
   const imgHref = e.target.dataset.source;
   const instance = basicLightbox.create(`<img src="${imgHref}" alt="Photo"/>`);
 
@@ -53,6 +58,7 @@ function onImageClick(e) {
   document.addEventListener('keydown', e => {
     if (e.code === 'Escape') {
       instance.close();
+      document.removeEventListener('keyup', e);
     }
   });
 }
