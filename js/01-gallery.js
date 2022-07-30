@@ -46,8 +46,6 @@ function createGalleryMarkup(items) {
 }
 function onImageClick(e) {
   e.preventDefault();
-  // const isImage = e.target.classlist.contains('.gallery__image');
-  console.log(e.target);
   if (e.target.nodeName !== 'IMG') {
     return;
   }
