@@ -20,5 +20,46 @@ import { galleryItems } from './gallery-items.js';
   </a>
 </div>; */
 }
+const refs = {
+  gallery: document.querySelector('.gallery'),
+};
+const modalTemplate = link => `<div class="modal">
+        <img src="${link}" alt="Photo"/>
+    </div>`;
 
+refs.gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(galleryItems));
+refs.gallery.addEventListener('click', onImageClick);
+
+function createGalleryMarkup(items) {
+  return items
+    .map(
+      ({ preview, original, description }) =>
+        `<div class="gallery__item">
+    <a class="gallery__link" href="${original}">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+    </a>
+  </div>`,
+    )
+    .join('');
+}
+function onImageClick(e) {
+  e.preventDafault();
+  const imgHref = e.target.dataset.source;
+  // console.log(imgHref);
+  const instance = basicLightbox.create(`<div class="modal">
+        <img src="${imgHref}" alt="Photo"/>
+    </div>`);
+
+  instance.show();
+}
 console.log(galleryItems);
+document.addEventListener('keydown', e => {
+  if (e.code === 'Escape') {
+    instance.close();
+  }
+});
