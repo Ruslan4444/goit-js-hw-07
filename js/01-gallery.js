@@ -47,7 +47,7 @@ function createGalleryMarkup(items) {
 function onImageClick(e) {
   e.preventDefault();
   const isImage = e.target.nodeName;
-  if (!isImage) {
+  if (!isImage === 'IMG') {
     return;
   }
   const imgHref = e.target.dataset.source;
